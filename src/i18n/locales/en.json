@@ -1,0 +1,17 @@
+{
+  "name": "english",
+  "message": {
+    "helloWorld": "Hello world",
+    "youMustSignInToContinue": "You must signin to continue",
+    "login": "Login",
+    "loginIsRequired": "Login is required",
+    "password": "Password",
+    "passwordIsRequired": "Password is required",
+    "signin": "sign in",
+    "signout": "Sign out",
+    "forgottenPassword": "forgotten password",
+    "home": "Home",
+    "users": "Users"
+  },
+  "error": {}
+}

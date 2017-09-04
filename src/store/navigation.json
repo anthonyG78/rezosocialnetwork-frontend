@@ -1,0 +1,49 @@
+[
+  {
+    "title": "home",
+    "icon": "home",
+    "route": "communityPosts",
+    "exact": true
+  },
+  {
+    "title": "search",
+    "icon": "search",
+    "route": "searchUser"
+  },
+  {
+    "title": "signout",
+    "icon": "exit_to_app",
+    "route": "",
+    "click": "signout"
+  },
+  { "divider": true },
+  { "header": "myPages" },
+  {
+    "title": "posts",
+    "icon": "view_list",
+    "route": "posts",
+    "exact": true,
+    "menuTabs": true
+  },
+  {
+    "title": "friends",
+    "icon": "people",
+    "route": "friends",
+    "exact": true,
+    "menuTabs": true
+  },
+  {
+    "title": "discussions",
+    "icon": "message",
+    "route": "discussions",
+    "exact": true,
+    "menuTabs": true
+  },
+  {
+    "title": "profil",
+    "icon": "account_box",
+    "route": "profil",
+    "exact": true,
+    "menuTabs": true
+  }
+]
