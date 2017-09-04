@@ -4,12 +4,25 @@
       <post-list :posts="posts" :self="self" v-if="posts.length" v-show="show"></post-list>
       <v-alert v-else v-show="show" v-bind:value="true" warning>Aucun post</v-alert>
     </v-slide-x-transition>
+    <v-slide-y-reverse-transition>
+      <v-btn 
+        primary 
+        raised 
+        floating 
+        class="floatingActionBtn" 
+        v-show="show"
+        @click.native="setAddPostDialogToggle(true)">
+        <v-icon light>add</v-icon>
+      </v-btn>
+    </v-slide-y-reverse-transition>
+    <add-post-dialog></add-post-dialog>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState, mapMutations } from 'vuex';
 import postList from '@/components/PostList';
+import addPostDialog from '@/components/addPostDialog';
 
 export default {
   name: 'communityPosts',
@@ -20,6 +33,7 @@ export default {
   },
   components: {
     'post-list': postList,
+    'add-post-dialog': addPostDialog,
   },
   mounted() {
     this.setLoadingPage(1);
@@ -34,6 +48,7 @@ export default {
       self: 'self',
       posts: 'posts',
       loadingPage: 'loadingPage',
+      addPostDialogToggle: 'addPostDialogToggle',
     }),
   },
   methods: {
@@ -44,6 +59,7 @@ export default {
     ]),
     ...mapMutations([
       'setLoadingPage',
+      'setAddPostDialogToggle',
     ]),
   },
 };
