@@ -64,7 +64,9 @@
     "errorOccured": "une erreur est survenue",
     "deleteProfil": "supprimer le profil",
     "doURealyWantDeleteProfil": "voulez-vous vraiment supprimer le profil ?",
-    "valid": "valider"
+    "valid": "valider",
+    "about": "à propos",
+    "enterTheZone": "entrer dans la zone"
   },
   "error": {}
 }

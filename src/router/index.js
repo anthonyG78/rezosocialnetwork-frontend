@@ -9,6 +9,7 @@ import indexLayout from '@/components/layout/index';
 import presentationLayout from '@/components/layout/presentation';
 // Pages
 import signin from '@/components/pages/signin';
+import about from '@/components/pages/about';
 import communityPosts from '@/components/pages/communityPosts';
 import posts from '@/components/pages/posts';
 import friends from '@/components/pages/friends';
@@ -17,6 +18,10 @@ import profil from '@/components/pages/profil';
 import post from '@/components/pages/post';
 import discussion from '@/components/pages/discussion';
 import searchUser from '@/components/pages/searchUser';
+
+const authorizedRoutes = [
+  'about',
+];
 
 Vue.use(Router);
 
@@ -35,7 +40,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      // name: 'indexLayout',
+      name: 'home',
       components: getSiteLayout(indexLayout),
       children: [
         {
@@ -120,6 +125,16 @@ const router = new Router({
       component: signin,
     },
     {
+      path: '/about',
+      name: 'about',
+      components: {
+        toolbar: Toolbar,
+        navigation: Navigation,
+        default: about,
+        footer: Footer,
+      },
+    },
+    {
       path: '*',
       name: '404',
       component: {
@@ -130,7 +145,9 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name === 'signin') {
+  if (authorizedRoutes.indexOf(to.name) > -1) {
+    next();
+  } else if (to.name === 'signin') {
     store.dispatch('isAuthenticated').then((isAuth) => {
       if (isAuth) {
         next({ name: 'communityPosts' });

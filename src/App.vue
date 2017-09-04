@@ -20,14 +20,29 @@
 
 <script>
 import { mapState } from 'vuex';
+import checkNotifications from '@/mixins/checkNotifications';
 import signoutDialog from '@/components/signoutDialog';
 import removeProfilDialog from '@/components/removeProfilDialog';
 
 export default {
+  mixins: [checkNotifications],
   name: 'app',
   components: {
     'signout-dialog': signoutDialog,
     'remove-profil-dialog': removeProfilDialog,
+  },
+  watch: {
+    self: function watchSelf() {
+      if (this.self) {
+        this.startFetchNotifications();
+        window.addEventListener('focus', this.startFetchNotifications);
+        window.addEventListener('blur', this.stopFetchNotifications);
+      } else {
+        this.stopFetchNotifications();
+        window.removeEventListener('focus', this.startFetchNotifications);
+        window.removeEventListener('blur', this.stopFetchNotifications);
+      }
+    },
   },
   computed: {
     ...mapState({
@@ -69,6 +84,11 @@ export default {
   .dialog--fullscreen {
     overflow-x: hidden !important;
   }
+
+  .logo
+    .icon
+      font-size: inherit;
+      vertical-align: bottom;
 
   .floatingActionBtn{
     position: fixed;

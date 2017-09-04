@@ -155,7 +155,8 @@
           </v-tabs>
           <v-progress-linear v-show="loading" v-bind:indeterminate="true" class="ma-0" secondary></v-progress-linear>
         </v-card>
-        <a href="/" class="white--text">{{ $t("message.forgottenPassword") }}</a>
+        <router-link to="/" class="white--text">{{ $t("message.forgottenPassword") }}</router-link> | 
+        <router-link :to="{ name: 'about' }" class="white--text">{{ $t("message.about") }}</router-link>
       </v-flex>
     </v-layout>
   </v-container>
@@ -294,51 +295,10 @@ export default {
 };
 </script>
 
-<style lang="stylus">
-  @import '../../style/theme'
-
-  /*.application
-    &.signin-view
-      background: $theme.primary !important;
-      @media (max-width: 780px) and (orientation: landscape)
-        height: initial !important;*/
-</style>
 <style lang="stylus" scoped>
   .container
     padding: 0;
 
   .layout 
     min-height: 100vmax;
-
-  .logo
-    .icon
-      font-size: inherit;
-      vertical-align: bottom;
-
-  /*@import '../../style/theme'
-
-  .layout
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    background-size: cover;
-    background-position: center;
-
-  .signin
-    height: 100%;
-
-  @media (max-width: 780px) and (orientation: landscape)
-    .page-container
-      padding: 0;
-    .layout
-      position: initial;
-
-  .logo
-    .icon
-      font-size: inherit;
-      vertical-align: bottom;*/
 </style>

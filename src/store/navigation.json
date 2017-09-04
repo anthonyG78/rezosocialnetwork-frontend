@@ -45,5 +45,11 @@
     "route": "profil",
     "exact": true,
     "menuTabs": true
+  },
+  { "divider": true },
+  {
+    "title": "about",
+    "icon": "info",
+    "route": "about"
   }
 ]

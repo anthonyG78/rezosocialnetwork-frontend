@@ -78,27 +78,27 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex';
-import checkNotifications from '@/mixins/checkNotifications';
+// import checkNotifications from '@/mixins/checkNotifications';
 import screenSizes from '@/mixins/screenSizes';
 
 export default {
-  mixins: [screenSizes, checkNotifications],
+  mixins: [screenSizes],
   data() {
     return {
       resizeWatcher: true,
       theme: this.dark,
     };
   },
-  created() {
-    this.startFetchNotifications();
-    window.addEventListener('focus', this.startFetchNotifications);
-    window.addEventListener('blur', this.stopFetchNotifications);
-  },
-  beforeDestroy() {
-    this.stopFetchNotifications();
-    window.removeEventListener('focus', this.startFetchNotifications);
-    window.removeEventListener('blur', this.stopFetchNotifications);
-  },
+  // created() {
+  //   this.startFetchNotifications();
+  //   window.addEventListener('focus', this.startFetchNotifications);
+  //   window.addEventListener('blur', this.stopFetchNotifications);
+  // },
+  // beforeDestroy() {
+  //   this.stopFetchNotifications();
+  //   window.removeEventListener('focus', this.startFetchNotifications);
+  //   window.removeEventListener('blur', this.stopFetchNotifications);
+  // },
   computed: {
     ...mapState({
       drawer: 'drawer',

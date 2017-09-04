@@ -3,12 +3,14 @@
     :fixed="!isXL"
     :class="{'secondary': !dark, 'primary': dark}" 
     light>
-    <v-toolbar-side-icon class="hidden-md-and-up" light @click.native.stop="setDrawer(!drawer)"></v-toolbar-side-icon>
+    <v-toolbar-side-icon v-if="self" class="hidden-md-and-up" light @click.native.stop="setDrawer(!drawer)"></v-toolbar-side-icon>
     <v-toolbar-title>
-      <v-icon light>bubble_chart</v-icon>
-      <span>REZO</span>
+      <router-link to="/">
+        <v-icon light>bubble_chart</v-icon>
+        <span class="white--text">REZO</span>
+      </router-link>
     </v-toolbar-title>
-    <search class="hidden-xs-only"></search>
+    <search v-if="self" class="hidden-xs-only"></search>
     <v-icon v-if="notifications.discussions.length || notifications.posts.length || notifications.friends.length" class="ml-3" light>notifications</v-icon>
   </v-toolbar>
 </template>
@@ -33,6 +35,7 @@
     },
     computed: {
       ...mapState({
+        self: 'self',
         dark: 'dark',
         drawer: 'drawer',
         notifications: 'notifications',
@@ -50,5 +53,8 @@
   #logo{
     height: 32px;
     vertical-align: middle;
+  }
+  .toolbar__title a {
+    text-decoration: none;
   }
 </style>
