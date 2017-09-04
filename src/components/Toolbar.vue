@@ -9,6 +9,7 @@
       <span>REZO</span>
     </v-toolbar-title>
     <search class="hidden-xs-only"></search>
+    <v-icon v-if="notifications.discussions.length || notifications.posts.length || notifications.friends.length" class="ml-3" light>notifications</v-icon>
   </v-toolbar>
 </template>
 
@@ -34,6 +35,7 @@
       ...mapState({
         dark: 'dark',
         drawer: 'drawer',
+        notifications: 'notifications',
       }),
     },
     methods: {
