@@ -4,12 +4,12 @@ module.exports = {
     rezo: {
       headers: {
         'Accept': '"application/json, text/plain"',
-        'Origin': '"http://localhost:9999/"'
+        'Origin': '"https://rezosocialnetwork.herokuapp.com/"'
       },
-      baseURL: '"http://localhost:9999/api"',
+      baseURL: '"https://rezosocialnetwork.herokuapp.com/api"',
     },
   },
   graphql: {
-    url: '"http://localhost:9999/graphql"',
+    url: '"https://rezosocialnetwork.herokuapp.com/graphql"',
   },
 }
