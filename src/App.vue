@@ -41,8 +41,8 @@ export default {
 
 <style lang="stylus" src="./style/main.styl"></style>
 <style lang="stylus">
-  .html
-    padding-right: 0;
+  html
+    padding-right: 0 !important;
 
   body
     height: auto;
