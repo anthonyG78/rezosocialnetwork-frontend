@@ -1,18 +1,15 @@
 module.exports = {
   NODE_ENV: '"production"',
   API: {
-    defaults: {
-      headers: {
-        get: {
-          'Accept': '"application/json, text/html"'
-        }
-      }
-    },
     rezo: {
       headers: {
-        'Accept': '"application/json, text/plain"'
+        'Accept': '"application/json, text/plain"',
+        'Origin': '"http://localhost:9999/"'
       },
-      baseURL: '"http://rezo/api"',
-    }
-  }
+      baseURL: '"http://localhost:9999/api"',
+    },
+  },
+  graphql: {
+    url: '"http://localhost:9999/graphql"',
+  },
 }

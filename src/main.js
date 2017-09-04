@@ -55,8 +55,6 @@ Vue.filter('formatDate', (value) => {
     const diff = now.diff(momentValue);
     const diffDuration = moment.duration(diff);
     const diffDays = diffDuration.asDays();
-    // console.log(diffDuration.asDays());
-
     return diffDays > 7 ? momentValue.format('LL') : momentValue.fromNow();
   }
   return value;
@@ -68,7 +66,7 @@ new Vue({
   mounted() {
     const body = document.body;
     body.classList.remove('site-loading');
-    body.getElementsByClassName('site-spinner')[0].style.display = 'none';
+    body.getElementsByClassName('spinner')[0].style.display = 'none';
   },
   store,
   router,
