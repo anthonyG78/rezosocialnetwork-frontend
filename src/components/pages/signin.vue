@@ -178,8 +178,8 @@ export default {
           scope: 'signin',
           submitName: 'signin',
           fields: {
-            username: 'toto',
-            password: '123',
+            username: '',
+            password: '',
           },
           rules: {
             username: [],
@@ -192,14 +192,14 @@ export default {
           scope: 'register',
           submitName: 'register',
           fields: {
-            username: 'Doudou28',
-            firstName: 'Lulu',
-            lastName: 'Malin',
-            email: 'lulu@mail.com',
-            password: '123',
+            username: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
             genders: [
-              { text: this.$t('message.mal'), value: 'homme' },
-              { text: this.$t('message.femal'), value: 'femme' },
+              { text: this.$t('message.mal'), value: 'mal' },
+              { text: this.$t('message.femal'), value: 'femal' },
             ],
             gender: '',
             age: '',
