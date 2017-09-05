@@ -121,6 +121,7 @@ export default new Vuex.Store({
     },
     // Notifications
     getNotifications({ commit }) {
+      console.log('store > getNotifications()');
       return rezoApi.getNotifications().then((notifications) => {
         commit('setNotifications', notifications);
       });

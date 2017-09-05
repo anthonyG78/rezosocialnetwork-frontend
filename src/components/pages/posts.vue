@@ -35,6 +35,7 @@ export default {
     return {
       show: false,
       error: '',
+      newLoaded: false,
     };
   },
   mounted() {
@@ -53,6 +54,11 @@ export default {
     '$route.params.userId': function routeParams() {
       this.loadPosts();
     },
+    'notifications.posts.length': function checkPosts() {
+      if (this.notifications.posts.length) {
+        this.loadPosts();
+      }
+    },
   },
   computed: {
     ...mapState({
@@ -60,6 +66,7 @@ export default {
       self: 'self',
       loadingPage: 'loadingPage',
       addPostDialogToggle: 'addPostDialogToggle',
+      notifications: 'notifications',
     }),
   },
   methods: {
@@ -76,7 +83,7 @@ export default {
       this.getPosts(this.$route.params.userId)
         .then(() => {
           this.show = true;
-          this.checkNotifications('posts');
+          // this.checkNotifications('posts');
           this.setLoadingPage(0);
         })
         .catch((errs) => {

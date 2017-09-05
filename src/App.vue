@@ -31,6 +31,13 @@ export default {
     'signout-dialog': signoutDialog,
     'remove-profil-dialog': removeProfilDialog,
   },
+  created() {
+    if (this.self) {
+      this.startFetchNotifications();
+      window.addEventListener('focus', this.startFetchNotifications);
+      window.addEventListener('blur', this.stopFetchNotifications);
+    }
+  },
   watch: {
     self: function watchSelf() {
       if (this.self) {

@@ -34,13 +34,14 @@
               <v-icon>more_vert</v-icon>
             </v-btn>
             <v-list>
-              <v-list-tile v-for="item in actions" :key="item.text" v-if="!item.isSelf || (item.isSelf && self._id == post.fromUser.id) || self.level < 2">
-                <v-list-tile @click.native="item.action">
-                  <v-list-tile-avatar>
-                    <v-icon>{{ item.icon }}</v-icon>
-                  </v-list-tile-avatar>
-                  <v-list-tile-title>{{ $t('message.' + item.text) }}</v-list-tile-title>
-                </v-list-tile>
+              <v-list-tile 
+                v-for="item in actions" 
+                :key="item.text" 
+                v-if="!item.isSelf || (item.isSelf && self._id == post.fromUser.id) || self.level < 2" @click.native="item.action">
+                <v-list-tile-avatar>
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-tile-avatar>
+                <v-list-tile-title>{{ $t('message.' + item.text) }}</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>

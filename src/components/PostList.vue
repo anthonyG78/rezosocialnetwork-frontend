@@ -23,7 +23,10 @@
             <v-card-media class="card__img card__img_default" src="/static/background/material-bg-default.svg"></v-card-media>
           </template>
           <v-card-text>
-            <p class="grey--text text-xs-right"><small>{{ post.date | formatDate }}</small></p>
+            <p class="grey--text text-xs-right">
+              <small>{{ post.date | formatDate }}</small>
+              <v-icon v-if="notifications.posts.indexOf(post.id) > -1" class="red--text">fiber_new</v-icon>
+            </p>
             <p>{{ post.text }}</p>
           </v-card-text>
         </router-link>
@@ -44,6 +47,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import screenSizes from '@/mixins/screenSizes';
 
 export default {
@@ -69,6 +73,11 @@ export default {
       }, 100 * key);
       this.postCopy.push(entry);
     });
+  },
+  computed: {
+    ...mapState({
+      notifications: 'notifications',
+    }),
   },
   methods: {
     cardOver: function cardOver(state, postId) {

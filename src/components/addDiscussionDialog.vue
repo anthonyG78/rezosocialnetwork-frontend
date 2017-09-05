@@ -11,7 +11,7 @@
           <span>{{ $t('message.addDiscussion') }}</span>
         </v-card-title>
         <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
-        <v-card-text class="text-xs-right">
+        <v-card-text>
           <v-select
             :label="$t('message.friends')"
             v-bind:items="friends"
@@ -21,7 +21,7 @@
             prepend-icon="people"
             multiple
             chips
-            dark
+            light
             max-height="auto"
             autocomplete
             data-vv-name="friends"
