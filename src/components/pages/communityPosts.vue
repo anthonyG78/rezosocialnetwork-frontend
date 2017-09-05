@@ -8,11 +8,12 @@
       <v-btn 
         primary 
         raised 
-        floating 
+        fab
+        dark 
         class="floatingActionBtn" 
         v-show="show"
         @click.native="setAddPostDialogToggle(true)">
-        <v-icon light>add</v-icon>
+        <v-icon dark>add</v-icon>
       </v-btn>
     </v-slide-y-reverse-transition>
     <add-post-dialog></add-post-dialog>

@@ -20,7 +20,6 @@
             </div>
         </v-alert>
         <v-list class="white" >
-          <v-list-item>
             <v-list-tile tag="div" :class="{'pink lighten-1': user.gender == 'femal', 'blue': user.gender == 'mal'}">
               <v-list-tile-action>
                 <v-icon class="white--text">wc</v-icon>
@@ -72,33 +71,32 @@
                 <v-list-tile-title>{{ user.connected ? $t('message.online') : $t('message.offline') }}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-          </v-list-item>
         </v-list>
       </div>
     </v-slide-x-transition>
     <v-slide-y-reverse-transition>
       <div class="floatingActionBtn" v-show="show">
         <template v-if="$store.getters.isAuthorized">
-          <v-btn primary raised floating @click.native="updateProfilHandler">
-            <v-icon light>create</v-icon>
+          <v-btn primary raised fab dark @click.native="updateProfilHandler">
+            <v-icon dark>create</v-icon>
           </v-btn>
-          <v-btn error raised floating @click.native="$store.commit('setDeleteProfilDialogToggle', true)">
-            <v-icon light>delete</v-icon>
+          <v-btn error raised fab dark @click.native="$store.commit('setDeleteProfilDialogToggle', true)">
+            <v-icon dark>delete</v-icon>
           </v-btn>
         </template>
         <template v-if="user.accepted == -1 && user._id !== self._id">
-          <v-btn primary raised floating @click.native="askFriendHandler">
-            <v-icon light>add</v-icon>
+          <v-btn primary raised fab dark @click.native="askFriendHandler">
+            <v-icon dark>add</v-icon>
           </v-btn>
         </template>
         <template v-else-if="user.accepted < 2 && user._id !== self._id">
-          <v-btn primary raised floating disabled>
-            <v-icon light>add</v-icon>
+          <v-btn primary raised fab dark disabled>
+            <v-icon dark>add</v-icon>
           </v-btn>
         </template>
         <template v-if="user.accepted == 2">
-          <v-btn error raised floating @click.native="deleteFriendHandler(user._id)">
-            <v-icon light>clear</v-icon>
+          <v-btn error raised fab dark @click.native="deleteFriendHandler(user._id)">
+            <v-icon dark>clear</v-icon>
           </v-btn>
         </template>
       </div>

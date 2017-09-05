@@ -7,36 +7,31 @@
     @input="value => setAddPostCommentDialogToggle(value)">
     <v-card>
       <form @submit.prevent="formValidate(addPostCommentForm.scope)">
-        <v-card-row>
-          <v-card-title>
-            <v-icon class="primary--text mr-2">add</v-icon>
-            <span>{{ $t('message.addComment') }}</span>
-          </v-card-title>
-        </v-card-row>
+        <v-card-title>
+          <v-icon class="primary--text mr-2">add</v-icon>
+          <span>{{ $t('message.addComment') }}</span>
+        </v-card-title>
         <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
-        <v-card-row>
-          <v-card-text>
-              <v-card-text class="text-xs-right">
-                <v-text-field 
-                  :light="dark"
-                  multi-line
-                  v-model="addPostCommentForm.fields.comment" 
-                  data-vv-name="comment"
-                  :data-vv-scope="addPostCommentForm.scope"
-                  name="comment"
-                  :label="$tc('message.comment', 1)" 
-                  :hint="$t('message.fieldRequired')"
-                  :placeholder="$tc('message.comment', 1)" 
-                  prepend-icon="create" 
-                  :rules="addPostCommentForm.rules.comment" 
-                  v-validate="'required'"></v-text-field>
-              </v-card-text>
-          </v-card-text>
-        </v-card-row>
-        <v-card-row actions class="pa-3">
-          <v-btn primary light flat="flat" @click.native="setAddPostCommentDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
-          <v-btn primary light type="submit">{{ $t("message.add") }}</v-btn>
-        </v-card-row>
+        <v-card-text class="text-xs-right">
+          <v-text-field 
+            :light="dark"
+            multi-line
+            v-model="addPostCommentForm.fields.comment" 
+            data-vv-name="comment"
+            :data-vv-scope="addPostCommentForm.scope"
+            name="comment"
+            :label="$tc('message.comment', 1)" 
+            :hint="$t('message.fieldRequired')"
+            :placeholder="$tc('message.comment', 1)" 
+            prepend-icon="create" 
+            :rules="addPostCommentForm.rules.comment" 
+            v-validate="'required'"></v-text-field>
+        </v-card-text>
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-btn primary dark flat="flat" @click.native="setAddPostCommentDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
+          <v-btn primary dark type="submit">{{ $t("message.add") }}</v-btn>
+        </v-card-title>
       </form>
       <v-progress-linear v-show="loading" v-bind:indeterminate="true" class="ma-0"></v-progress-linear>
     </v-card>

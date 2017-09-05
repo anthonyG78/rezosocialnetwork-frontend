@@ -2,16 +2,17 @@
   <v-toolbar 
     :fixed="!isXL"
     :class="{'secondary': !dark, 'primary': dark}" 
-    light>
-    <v-toolbar-side-icon v-if="self" class="hidden-md-and-up" light @click.native.stop="setDrawer(!drawer)"></v-toolbar-side-icon>
+    dark>
+    <v-toolbar-side-icon v-if="self && (isXS || isSM)" class="hidden-sm-and-up" dark @click.stop="setDrawer(!drawer)"></v-toolbar-side-icon>
     <v-toolbar-title>
       <router-link to="/">
-        <v-icon light>bubble_chart</v-icon>
+        <v-icon dark>bubble_chart</v-icon>
         <span class="white--text">REZO</span>
       </router-link>
     </v-toolbar-title>
+    <v-spacer></v-spacer>
     <search v-if="self" class="hidden-xs-only"></search>
-    <v-icon v-if="notifications.discussions.length || notifications.posts.length || notifications.friends.length" class="ml-3" light>notifications</v-icon>
+    <v-icon v-if="notifications.discussions.length || notifications.posts.length || notifications.friends.length" class="ml-3" dark>notifications</v-icon>
   </v-toolbar>
 </template>
 

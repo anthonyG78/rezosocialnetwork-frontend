@@ -1,5 +1,5 @@
 <template>
-  <v-footer :class="{'secondary': !dark, 'primary': dark, 'py-5 px-2': true}" >
+  <v-footer :class="{'secondary': !dark, 'primary': dark, 'white--text py-5 px-2': true}" >
     <span>{{ (new Date()).getFullYear() }}</span>
   </v-footer>
 </template>

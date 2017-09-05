@@ -1,20 +1,20 @@
 <template>
   <v-dialog :value="deleteProfilDialogToggle" persistent :width="480">
     <v-card>
-      <v-card-row>
+      <v-card-title>
         <v-card-title>
           <v-icon class="primary--text mr-2">delete</v-icon>
           <span>{{ $t('message.deleteProfil') }}</span>
         </v-card-title>
-      </v-card-row>
+      </v-card-title>
       <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
-      <v-card-row>
+      <v-card-title>
         <v-card-text>{{ $t('message.doURealyWantDeleteProfil') }}</v-card-text>
-      </v-card-row>
-      <v-card-row actions>
+      </v-card-title>
+      <v-card-title actions>
         <v-btn class="primary--text" flat @click.native="setDeleteProfilDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
-        <v-btn class="" primary light @click.native="deleteDialogHandler">{{ $t('message.valid') }}</v-btn>
-      </v-card-row>
+        <v-btn class="" primary dark @click.native="deleteDialogHandler">{{ $t('message.valid') }}</v-btn>
+      </v-card-title>
       <v-progress-linear v-show="loading" v-bind:indeterminate="true" class="ma-0"></v-progress-linear>
     </v-card>
   </v-dialog>

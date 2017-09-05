@@ -40,7 +40,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      // name: 'home',
       components: getSiteLayout(indexLayout),
       children: [
         {

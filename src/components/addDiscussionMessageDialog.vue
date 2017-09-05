@@ -6,36 +6,31 @@
     :width="isXL ? 640 : 480">
     <v-card>
       <form @submit.prevent="formValidate(addDiscussionMessageForm.scope)">
-        <v-card-row>
-          <v-card-title>
-            <v-icon class="primary--text mr-2">add</v-icon>
-            <span>{{ $t('message.addMessage') }}</span>
-          </v-card-title>
-        </v-card-row>
+        <v-card-title>
+          <v-icon class="primary--text mr-2">add</v-icon>
+          <span>{{ $t('message.addMessage') }}</span>
+        </v-card-title>
         <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
-        <v-card-row>
-          <v-card-text>
-              <v-card-text class="text-xs-right">
-                <v-text-field 
-                  :light="dark"
-                  multi-line
-                  v-model="addDiscussionMessageForm.fields.message" 
-                  data-vv-name="message"
-                  :data-vv-scope="addDiscussionMessageForm.scope"
-                  name="message"
-                  :label="$tc('message.message', 1)" 
-                  :hint="$t('message.fieldRequired')"
-                  :placeholder="$tc('message.message', 1)" 
-                  prepend-icon="create" 
-                  :rules="addDiscussionMessageForm.rules.message" 
-                  v-validate="'required'"></v-text-field>
-              </v-card-text>
-          </v-card-text>
-        </v-card-row>
-        <v-card-row actions class="pa-3">
-          <v-btn primary light flat="flat" @click.native="$emit('input', false)">{{ $t('message.cancel') }}</v-btn>
-          <v-btn primary light type="submit">{{ $t("message.add") }}</v-btn>
-        </v-card-row>
+        <v-card-text class="text-xs-right">
+          <v-text-field 
+            :light="dark"
+            multi-line
+            v-model="addDiscussionMessageForm.fields.message" 
+            data-vv-name="message"
+            :data-vv-scope="addDiscussionMessageForm.scope"
+            name="message"
+            :label="$tc('message.message', 1)" 
+            :hint="$t('message.fieldRequired')"
+            :placeholder="$tc('message.message', 1)" 
+            prepend-icon="create" 
+            :rules="addDiscussionMessageForm.rules.message" 
+            v-validate="'required'"></v-text-field>
+        </v-card-text>
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-btn primary dark flat="flat" @click.native="$emit('input', false)">{{ $t('message.cancel') }}</v-btn>
+          <v-btn primary dark type="submit">{{ $t("message.add") }}</v-btn>
+        </v-card-title>
       </form>
       <v-progress-linear v-show="loading" :indeterminate="true" class="ma-0"></v-progress-linear>
     </v-card>

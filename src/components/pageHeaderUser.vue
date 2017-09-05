@@ -8,10 +8,10 @@
             <img :src="user.avatar + '&s=' + (isXS ? '96' : '128')" class="elevation-5" v-if="show" v-show="show"/>
           </v-slide-y-reverse-transition>
         </v-card-title>
-        <v-card-row actions class="white--text pa-4">
+        <v-card-actions actions class="white--text pa-4">
+          <span>{{ user.username }}</span>
           <v-icon :class="{'green--text': user.connected, 'grey--text': !user.connected}">fiber_manual_record</v-icon>
-          {{ user.username }}
-        </v-card-row>
+        </v-card-actions>
       </v-card>
     </div>
   </div>
@@ -57,11 +57,12 @@ export default {
     height: 100% !important;
     
     img {
-      margin-bottom: -2em;
+      margin-bottom: -3em;
     }
   }
 
-  .card__row--actions {
+  .card__actions {
+    flex-direction: row-reverse;
     font-size: 2em;
     background: rgba(0, 0, 0, .25)
   }

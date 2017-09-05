@@ -10,29 +10,29 @@
       @blur="inputFocusHandler(false)"
       @keyup.native.enter="keyupEnterHandler"
       @input="value => setSearchTerm(value)"
-      light>
+      dark>
     </v-text-field>
     <v-slide-y-reverse-transition>
       <div v-show="searchTerm !== '' && inputSearchFocus">
         <v-list class="white" v-if="loading">
-          <v-list-item>
+          <v-list-tile>
             <v-list-tile tag="div">
               <v-list-tile-avatar>
                 <v-progress-circular indeterminate v-bind:size="32" class="primary--text"></v-progress-circular>
               </v-list-tile-avatar>
               <span class="grey--text">{{ $t('message.loading') }}</span>
             </v-list-tile>
-          </v-list-item>
+          </v-list-tile>
         </v-list>
         <v-list class="white" v-else-if="!searchedUsersPreview.length">
-          <v-list-item>
+          <v-list-tile>
             <v-list-tile tag="div">
               <v-list-tile-avatar>
                 <v-icon large class="grey--text">error</v-icon>
               </v-list-tile-avatar>
               aucun utilisateur
             </v-list-tile>
-          </v-list-item>
+          </v-list-tile>
         </v-list>
         <users-list v-else :users="searchedUsersPreview"></users-list>
       </div>
@@ -103,7 +103,7 @@ export default {
       ul {
         position: absolute;
         width: 100%;
-        top: calc(100% + 5px);
+        top: 100%;
       }
     }
   }

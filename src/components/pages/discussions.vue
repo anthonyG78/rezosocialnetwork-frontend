@@ -7,44 +7,44 @@
       <v-layout row v-if="discussionsCopy.length" v-show="show">
         <v-flex xs12>
           <v-list class="white mt-0" three-line>
-            <v-list-item v-for="(discussion, index) in discussionsCopy" :key="discussion.id">
+            <template v-for="(discussion, index) in discussionsCopy">
               <v-divider v-if="index > 0"></v-divider>
-                <v-list-tile avatar router :to="{ name: 'discussion', params: { discussionId: discussion.id }}">
-                  <v-list-tile-avatar>
-                    <img :src="discussion.firstUser.avatar + '&s=64'"/>
-                  </v-list-tile-avatar>
-                  <v-list-tile-content>
-                    <v-list-tile-title v-html="discussion.firstUser.username"></v-list-tile-title>
-                    <v-list-tile-sub-title v-if="discussion.usersLength > 1" v-html="(discussion.usersLength - 1) + ' ' + $tc('message.other', discussion.usersLength ? 1 : 0)"></v-list-tile-sub-title>
-                    <v-list-tile-sub-title v-html="discussion.subject"></v-list-tile-sub-title>
-                  </v-list-tile-content>
-                  <v-list-tile-action>
-                    <v-list-tile-action-text>{{ discussion.dateMaj | formatDate }}</v-list-tile-action-text>
-                    <div class="actions-btn-list" v-if="$store.getters.isAuthorized">
-                      <template v-if="notifications.discussions.indexOf(discussion.id) !== -1">
-                        <v-chip small class="red white--text">{{ discussion.messages.length }}</v-chip>
-                      </template>
-                      <template v-else>
-                        <v-chip small class="grey white--text">{{ discussion.messages.length }}</v-chip>
-                      </template>
-                      <v-btn icon class="error--text" @click.native.stop="(e) => deleteDiscussionHandler(e, discussion.id)">
-                        <v-icon>clear</v-icon>
-                      </v-btn>
-                    </div>
-                  </v-list-tile-action>
-                </v-list-tile>
-            </v-list-item>
+              <v-list-tile avatar router :to="{ name: 'discussion', params: { discussionId: discussion.id }}" :key="discussion.id">
+                <v-list-tile-avatar>
+                  <img :src="discussion.firstUser.avatar + '&s=64'"/>
+                </v-list-tile-avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title v-html="discussion.firstUser.username"></v-list-tile-title>
+                  <v-list-tile-sub-title v-if="discussion.usersLength > 1" v-html="(discussion.usersLength - 1) + ' ' + $tc('message.other', discussion.usersLength ? 1 : 0)"></v-list-tile-sub-title>
+                  <v-list-tile-sub-title v-html="discussion.subject"></v-list-tile-sub-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <v-list-tile-action-text>{{ discussion.dateMaj | formatDate }}</v-list-tile-action-text>
+                  <div class="actions-btn-list" v-if="$store.getters.isAuthorized">
+                    <template v-if="notifications.discussions.indexOf(discussion.id) !== -1">
+                      <v-chip small class="red white--text">{{ discussion.messages.length }}</v-chip>
+                    </template>
+                    <template v-else>
+                      <v-chip small class="grey white--text">{{ discussion.messages.length }}</v-chip>
+                    </template>
+                    <v-btn icon class="error--text" @click.native.stop="(e) => deleteDiscussionHandler(e, discussion.id)">
+                      <v-icon>clear</v-icon>
+                    </v-btn>
+                  </div>
+                </v-list-tile-action>
+              </v-list-tile>
+            </template>
           </v-list>
         </v-flex>
       </v-layout>
       <v-alert v-else :value="true" warning v-show="show">Aucune discussion</v-alert>
     </v-slide-x-transition>
     <v-slide-y-reverse-transition>
-      <v-btn primary raised floating 
+      <v-btn primary raised fab dark 
         class="floatingActionBtn" 
         v-show="show"
         @click.native="setAddDiscussionDialogToggle(true)">
-        <v-icon light>add</v-icon>
+        <v-icon dark>add</v-icon>
       </v-btn>
     </v-slide-y-reverse-transition>
     <add-discussion-dialog :selectedUsersId="selectedUsersId"></add-discussion-dialog>

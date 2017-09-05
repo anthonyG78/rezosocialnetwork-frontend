@@ -1,5 +1,5 @@
 <template>
-  <v-tabs grow light icons class="mb-3">
+  <v-tabs grow dark icons class="mb-3">
     <v-tabs-bar slot="activators">
       <v-tabs-item 
         router 

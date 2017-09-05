@@ -20,7 +20,7 @@
       </v-list-tile-content>
     </div>
     <v-list :dense="isXS || isSM" class="mt-0">
-      <v-list-item v-for="item in items" :key="item.title">
+      <template v-for="item in items">
         <v-subheader 
           :dark="!dark"
           :light="dark"
@@ -34,13 +34,14 @@
         ></v-divider>
         <v-list-tile 
           v-else 
+          :key="item.title" 
           ripple 
           router 
           :exact="item.exact" 
           :to="item.route ? { name: item.route } : null"
           @click.native="item.click ? clickHandler(item.click) : null">
           <v-list-tile-action>
-            <v-icon :dark="!dark">{{ item.icon }}</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>{{ $t('message.'+item.title) }}</v-list-tile-title>
@@ -49,23 +50,21 @@
             <v-icon class="red--text">fiber_new</v-icon>
           </v-list-tile-action>
         </v-list-tile>
-      </v-list-item>
+      </template>
     </v-list>
     <v-divider
       :dark="dark"
     ></v-divider>
 
     <v-list :dense="isXS || isSM" class="mt-0">
-      <v-list-item>
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-switch v-model="theme" dark hide-details></v-switch>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ $t('message.darkMode') }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list-item>
+      <v-list-tile>
+        <v-list-tile-action>
+          <v-switch v-model="theme" dark hide-details></v-switch>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>{{ $t('message.darkMode') }}</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
     </v-list>
 
     <footer class="px-3 mt-4 grey--text">

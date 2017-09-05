@@ -3,31 +3,31 @@
     <v-flex xs12 sm6 md4 lg3 v-for="(post, index) in postCopy" :key="post.id">
     <v-scale-transition>
       <v-card :key="post.id" :class="{'white': !cardIsOver, 'mb-3': true, 'grey lighten-4': cardIsOver && postIdOver == post.id}" v-show="post.show">
-          <v-card-row class="pa-3">
-            <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
-              <v-list-tile-avatar>
-                <img :src="post.fromUser.avatar + '&s=64'">
-                <span class="primary--text">{{ post.fromUser.username }}</span>
-              </v-list-tile-avatar>
-            </router-link>
-            <router-link v-if="post.fromUser.id !== post.toUser.id" :to="{ name: 'profil_profil', params: { userId: post.toUser.id }}">
-              <v-icon class="grey--text text--lighten-1">keyboard_arrow_right</v-icon>
-              <span class="primary--text">{{ post.toUser.username }}</span>
-            </router-link>
-          </v-card-row>
+        <v-card-title class="pa-3">
+          <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
+            <v-list-tile-avatar>
+              <img :src="post.fromUser.avatar + '&s=64'">
+              <span class="primary--text">{{ post.fromUser.username }}</span>
+            </v-list-tile-avatar>
+          </router-link>
+          <router-link v-if="post.fromUser.id !== post.toUser.id" :to="{ name: 'profil_profil', params: { userId: post.toUser.id }}">
+            <v-icon class="grey--text text--lighten-1">keyboard_arrow_right</v-icon>
+            <span class="primary--text">{{ post.toUser.username }}</span>
+          </router-link>
+        </v-card-title>
         <router-link :to="{ name: 'post', params: { id: post.id }}" @mouseover.native="cardOver(true, post.id)"  @mouseout.native="cardOver(false, post.id)">
           <template v-if="post.image">
-              <v-card-row class="card__img" :img="post.image"></v-card-row>
+            <v-card-media class="card__img" :src="post.image"></v-card-media>
           </template>
           <template v-else>
-            <v-card-row class="card__img card__img_default" img="/static/background/material-bg-default.svg"></v-card-row>
+            <v-card-media class="card__img card__img_default" src="/static/background/material-bg-default.svg"></v-card-media>
           </template>
           <v-card-text>
             <p class="grey--text text-xs-right"><small>{{ post.date | formatDate }}</small></p>
             <p>{{ post.text }}</p>
           </v-card-text>
         </router-link>
-        <v-card-row class="grey lighten-4" actions>
+        <v-card-title class="grey lighten-4" actions>
           <div v-if="post.comments.length > 0">
             <v-icon class="primary--text">mode_comment</v-icon>
             <span class="primary--text">{{ post.comments.length }}</span>
@@ -36,7 +36,7 @@
             <v-icon class="grey--text">mode_comment</v-icon>
             <span class="grey--text">0</span>
           </div>
-        </v-card-row>
+        </v-card-title>
       </v-card>
     </v-scale-transition>
     </v-flex>

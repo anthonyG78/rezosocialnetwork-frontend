@@ -8,7 +8,7 @@
     </v-slide-y-transition>
     <v-slide-x-transition>
       <v-card v-if="show" >
-        <v-card-row>
+        <v-card-title>
           <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
             <v-chip>
               <v-avatar>
@@ -34,19 +34,21 @@
               <v-icon>more_vert</v-icon>
             </v-btn>
             <v-list>
-              <v-list-item v-for="item in actions" :key="item.text" v-if="!item.isSelf || (item.isSelf && self._id == post.fromUser.id) || self.level < 2">
+              <v-list-tile v-for="item in actions" :key="item.text" v-if="!item.isSelf || (item.isSelf && self._id == post.fromUser.id) || self.level < 2">
                 <v-list-tile @click.native="item.action">
                   <v-list-tile-avatar>
                     <v-icon>{{ item.icon }}</v-icon>
                   </v-list-tile-avatar>
                   <v-list-tile-title>{{ $t('message.' + item.text) }}</v-list-tile-title>
                 </v-list-tile>
-              </v-list-item>
+              </v-list-tile>
             </v-list>
           </v-menu>
-        </v-card-row>
+        </v-card-title>
         <v-divider></v-divider>
-        <v-card-title>{{ post.title }}</v-card-title>
+        <v-card-title>
+          <h3 class="headline mb-0">{{ post.title }}</h3>
+        </v-card-title>
         <v-divider></v-divider>
         <v-card-text>
           <p class="grey--text text-xs-right">{{ post.date | formatDate }}</p>
@@ -54,7 +56,7 @@
         </v-card-text>
         <v-list class="grey lighten-4">
           <v-subheader v-text="post.comments.length + ' ' + $tc('message.comment', post.comments.length ? 0 : 1)"></v-subheader>
-          <v-list-item v-for="comment in post.comments" :key="comment.id">
+          <v-list-tile v-for="comment in post.comments" :key="comment.id">
             <!-- <v-list-tile avatar tag="div"> -->
             <v-list-tile avatar tag="div">
               <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
@@ -67,13 +69,13 @@
                 <v-list-tile-sub-title v-html="comment.text"></v-list-tile-sub-title>
               </v-list-tile-content>
             </v-list-tile>
-          </v-list-item>
+          </v-list-tile>
         </v-list>
       </v-card>
     </v-slide-x-transition>
     <v-slide-y-reverse-transition>
-      <v-btn primary raised floating class="floatingActionBtn" v-show="show" @click.native="addCommentHandler">
-        <v-icon light>create</v-icon>
+      <v-btn primary raised fab dark class="floatingActionBtn" v-show="show" @click.native="addCommentHandler">
+        <v-icon dark>create</v-icon>
       </v-btn>
     </v-slide-y-reverse-transition>
     <add-post-dialog :id="post.id"></add-post-dialog>

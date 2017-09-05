@@ -2,7 +2,7 @@
   <div class="page-container">
     <v-container fluid class="grey lighten-2 presentation-header">
       <v-btn primary v-on:click.native="goBack()">
-        <v-icon light>arrow_back</v-icon>
+        <v-icon dark>arrow_back</v-icon>
       </v-btn>
     </v-container>
     <v-container fluid>

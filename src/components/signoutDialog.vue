@@ -1,19 +1,16 @@
 <template>
   <v-dialog :value="signoutDialogToggle" @input="value => setSignoutDialogToggle(value)" persistent :width="480">
     <v-card>
-      <v-card-row>
-        <v-card-title>
-          <v-icon class="primary--text mr-2">exit_to_app</v-icon>
-          <span>{{ $t('message.signout') }}</span>
-        </v-card-title>
-      </v-card-row>
-      <v-card-row>
-        <v-card-text>{{ $t('message.doURlyWant2SignOut') }}</v-card-text>
-      </v-card-row>
-      <v-card-row actions class="pa-3">
-        <v-btn primary light flat="flat" @click.native="setSignoutDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
-        <v-btn primary light flat="flat" @click.native="signoutConfirmed()">{{ $t('message.signout') }}</v-btn>
-      </v-card-row>
+      <v-card-title>
+        <v-icon class="primary--text mr-2">exit_to_app</v-icon>
+        <span>{{ $t('message.signout') }}</span>
+      </v-card-title>
+      <v-card-text>{{ $t('message.doURlyWant2SignOut') }}</v-card-text>
+      <v-card-title>
+        <v-spacer></v-spacer>
+        <v-btn primary dark flat="flat" @click.native="setSignoutDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
+        <v-btn primary dark @click.native="signoutConfirmed()">{{ $t('message.signout') }}</v-btn>
+      </v-card-title>
       <v-progress-linear v-show="loading" v-bind:indeterminate="true" class="ma-0"></v-progress-linear>
     </v-card>
   </v-dialog>

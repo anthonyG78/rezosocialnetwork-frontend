@@ -8,7 +8,7 @@
           :label="$t('message.search') + '...'" 
           hide-details 
           single-line 
-          light
+          dark
           @input="value => setSearchTerm(value)">
         </v-text-field>
       </v-flex>

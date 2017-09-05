@@ -5,7 +5,7 @@
         <v-flex xs12 sm8 lg6 offset-sm2 offset-lg3>
           <div class="logo mb-4">
             <h1 class="white--text logo">
-              <v-icon light>bubble_chart</v-icon>
+              <v-icon dark>bubble_chart</v-icon>
               <span>REZO</span>
             </h1>
           </div>
@@ -50,17 +50,21 @@
       <v-layout row>
         <v-flex xs12 sm8 lg6 offset-sm2 offset-lg3>
           <v-card>
-            <v-card-row img="https://media.licdn.com/mpr/mpr/shrink_300_300/AAEAAQAAAAAAAAh5AAAAJGIxMzVmYjZjLTFmMzItNDFjMS05Y2JiLWM2MWVkZDIxOWRlZQ.jpg" height="300px">
-              <v-card-text class="white--text pa-0">
-                <v-card-title>Anthony G.</v-card-title>
-              </v-card-text>
-            </v-card-row>
+            <v-card-media src="https://media.licdn.com/mpr/mpr/shrink_300_300/AAEAAQAAAAAAAAh5AAAAJGIxMzVmYjZjLTFmMzItNDFjMS05Y2JiLWM2MWVkZDIxOWRlZQ.jpg" height="300px">
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-end flexbox>
+                    <span class="headline white--text">Anthony G</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-card-media>
             <v-card-text>
               <p>Je suis tombé dans le développement en 2009, j'ai d'abord travaillé avec les technologies web "classiques" telles que Apache, PHP, HTML, CSS... pour me tourner ensuite vers des technologies plus avancée telles que NodeJs, ExpressJs, MongoDb, VueJs, SCSS...</p>
               <p>Aujourd'hui, j'ai effectué un virage dans ma carrière grâce à une formation en JavaScript Full Stack au centre Ifocop. <strong>REZO</strong> en est le projet final.</p>
               <p>Venez Rédiger vos avis dans la Zone !</p>
             </v-card-text>
-            <v-card-row actions>
+            <v-card-title actions>
               <v-btn 
                 large
                 block
@@ -68,7 +72,7 @@
                 class="white--text"
                 @click.native="zoneEnterHandler"
               >{{ $t('message.enterTheZone') }}</v-btn>
-            </v-card-row>
+            </v-card-title>
           </v-card>
         </v-flex>
       </v-layout>

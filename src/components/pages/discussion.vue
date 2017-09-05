@@ -5,7 +5,7 @@
     </v-slide-x-transition>
     <v-slide-y-transition>
       <v-card class="mb-3" v-if="show">
-        <v-card-row>
+        <v-card-title>
           <router-link v-for="user in discussion.users" :to="{ name: 'profil_profil', params: { userId: user.id }}" :key="user.id">
             <v-chip>
               <v-avatar>
@@ -20,17 +20,17 @@
                   <v-icon>more_vert</v-icon>
                 </v-btn>
                 <v-list>
-                  <v-list-item v-for="item in actions" :key="item.text">
+                  <v-list-tile v-for="item in actions" :key="item.text">
                     <v-list-tile @click.native="item.action">
                       <v-list-tile-avatar>
                         <v-icon>{{ item.icon }}</v-icon>
                       </v-list-tile-avatar>
                       <v-list-tile-title>{{ $t('message.' + item.text) }}</v-list-tile-title>
                     </v-list-tile>
-                  </v-list-item>
+                  </v-list-tile>
                 </v-list>
               </v-menu>
-        </v-card-row>
+        </v-card-title>
         <v-divider></v-divider>
         <v-subheader v-text="discussion.subject"></v-subheader>
       </v-card>
@@ -41,9 +41,9 @@
           <template v-if="message.user.id == self._id">
             <v-flex xs10 :key="message.id" class="mb-2">
               <v-card class="grey lighten-4 pa-3">
-                <v-card-row>
+                <v-card-title>
                   {{ message.text }}
-                </v-card-row>
+                </v-card-title>
               </v-card>
               <small class="grey--text">{{ message.date | formatDate }}</small>
             </v-flex>
@@ -65,9 +65,9 @@
             </v-flex>
             <v-flex xs10 :key="message.id" class="mb-2">
               <v-card class="white pa-3">
-                <v-card-row>
+                <v-card-title>
                   {{ message.text }}
-                </v-card-row>
+                </v-card-title>
               </v-card>
               <small class="grey--text">{{ message.date | formatDate }}</small>
             </v-flex>
@@ -76,8 +76,8 @@
       </v-layout>
     </v-slide-x-transition>
     <v-slide-y-reverse-transition>
-      <v-btn primary raised floating class="floatingActionBtn" v-show="show" @click.native="addMessageHandler">
-        <v-icon light>create</v-icon>
+      <v-btn primary raised fab dark class="floatingActionBtn" v-show="show" @click.native="addMessageHandler">
+        <v-icon dark>create</v-icon>
       </v-btn>
     </v-slide-y-reverse-transition>
     <!-- Add discussion Button -->

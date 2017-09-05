@@ -32,8 +32,8 @@
       <v-alert v-else v-show="show" v-bind:value="true" warning>Aucun ami</v-alert>
     </v-slide-x-transition>
     <!-- <v-slide-y-reverse-transition>
-      <v-btn primary raised floating class="floatingActionBtn" v-show="show">
-        <v-icon light>create</v-icon>
+      <v-btn primary raised fab dark class="floatingActionBtn" v-show="show">
+        <v-icon dark>create</v-icon>
       </v-btn>
     </v-slide-y-reverse-transition> -->
     <v-snackbar

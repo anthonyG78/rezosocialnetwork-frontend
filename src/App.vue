@@ -99,7 +99,14 @@ export default {
   }
 
   .actions-btn-list {
-    display: inline-flex;
+    display: flex;
+
+    > * {
+      display: inline-flex;
+    }
+  }
+  .list__tile__action .btn--icon {
+    margin: 0;
   }
 
 </style>

@@ -4,14 +4,14 @@
       <v-flex xs10 sm8 md6 lg4 offset-xs1 offset-sm2 offset-md3 offset-lg4 class="signin text-xs-center pa-4">
         <div class="logo mb-4">
           <h1 class="white--text logo">
-            <v-icon light>bubble_chart</v-icon>
+            <v-icon dark>bubble_chart</v-icon>
             <span>REZO</span>
           </h1>
         </div>
         <v-card class="elevation-10 mb-4" white>
           <v-card-title primary-title class="primary--text">{{ $t("message.youMustSignInToContinue") }}</v-card-title>
           <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
-          <v-tabs grow light>
+          <v-tabs grow dark>
             <v-tabs-bar slot="activators">
               <v-tabs-slider></v-tabs-slider>
               <v-tabs-item href="#signin-tab">
@@ -47,7 +47,7 @@
                     :rules="forms.signin.rules.password" 
                     v-validate="'required'"
                     type="password"></v-text-field>
-                    <v-btn secondary light type="submit">{{ $t("message." + forms.signin.submitName) }}</v-btn>
+                    <v-btn secondary dark type="submit">{{ $t("message." + forms.signin.submitName) }}</v-btn>
                 </v-card-text>
               </form>
             </v-tabs-content>
@@ -142,13 +142,13 @@
                     ></v-text-field>
                     <v-date-picker v-model="forms.register.fields.age" scrollable :landscape="isLandscape">
                       <template scope="{ save, cancel }">
-                        <v-card-row actions>
+                        <v-card-title actions>
                           <v-btn flat primary @click.native="dialogDatePicker = false">{{ $t('message.cancel') }}</v-btn>
-                        </v-card-row>
+                        </v-card-title>
                       </template>
                     </v-date-picker>
                   </v-dialog>
-                  <v-btn secondary light type="submit">{{ $t("message." + forms.register.submitName) }}</v-btn>
+                  <v-btn secondary dark type="submit">{{ $t("message." + forms.register.submitName) }}</v-btn>
                 </v-card-text>
               </form>
             </v-tabs-content>

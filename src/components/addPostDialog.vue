@@ -7,63 +7,58 @@
     @input="value => setAddPostDialogToggle(value)">
     <v-card>
       <form @submit.prevent="formValidate(addPostForm.scope)">
-        <v-card-row>
-          <v-card-title>
-            <v-icon class="primary--text mr-2">{{ id ? 'create' : 'add' }}</v-icon>
-            <span>{{ id ? $t('message.updatePost') : $t('message.addPost') }}</span>
-          </v-card-title>
-        </v-card-row>
+        <v-card-title>
+          <v-icon class="primary--text mr-2">{{ id ? 'create' : 'add' }}</v-icon>
+          <span>{{ id ? $t('message.updatePost') : $t('message.addPost') }}</span>
+        </v-card-title>
         <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
-        <v-card-row>
-          <v-card-text>
-              <v-card-text class="text-xs-right">
-                <v-text-field 
-                  :light="dark"
-                  v-model="addPostForm.fields.title" 
-                  data-vv-name="title"
-                  :data-vv-scope="addPostForm.scope"
-                  name="title"
-                  :label="$t('message.title')" 
-                  :hint="$t('message.fieldRequired')"
-                  :placeholder="$t('message.title')" 
-                  prepend-icon="create" 
-                  :rules="addPostForm.rules.title" 
-                  v-validate="'required'"></v-text-field>
-                <v-text-field 
-                  :light="dark"
-                  multi-line
-                  v-model="addPostForm.fields.text" 
-                  data-vv-name="text"
-                  :data-vv-scope="addPostForm.scope"
-                  name="text"
-                  :label="$t('message.text')" 
-                  :hint="$t('message.fieldRequired')"
-                  :placeholder="$t('message.text')" 
-                  prepend-icon="create" 
-                  :rules="addPostForm.rules.text" 
-                  v-validate="'required'"></v-text-field>
-                <v-text-field 
-                  :light="dark"
-                  v-model="addPostForm.fields.image" 
-                  data-vv-name="image"
-                  :data-vv-scope="addPostForm.scope"
-                  name="image"
-                  :label="$t('message.image')"
-                  :placeholder="$t('message.image')" 
-                  prepend-icon="insert_link" 
-                  :rules="addPostForm.rules.image" 
-                  v-validate="'url'"
-                  type="text"></v-text-field>
-                <div class="img-preview">
-                  <img v-if="(/\.(gif|jpg|jpeg|tiff|png)$/i).test(addPostForm.fields.image)" :src="addPostForm.fields.image" />
-                </div>
-              </v-card-text>
-          </v-card-text>
-        </v-card-row>
-        <v-card-row actions class="pa-3">
-          <v-btn primary light flat="flat" @click.native="setAddPostDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
-          <v-btn primary light type="submit">{{ $t("message." + (id ? 'update' : 'add')) }}</v-btn>
-        </v-card-row>
+        <v-card-text class="text-xs-right">
+          <v-text-field 
+            :light="dark"
+            v-model="addPostForm.fields.title" 
+            data-vv-name="title"
+            :data-vv-scope="addPostForm.scope"
+            name="title"
+            :label="$t('message.title')" 
+            :hint="$t('message.fieldRequired')"
+            :placeholder="$t('message.title')" 
+            prepend-icon="create" 
+            :rules="addPostForm.rules.title" 
+            v-validate="'required'"></v-text-field>
+          <v-text-field 
+            :light="dark"
+            multi-line
+            v-model="addPostForm.fields.text" 
+            data-vv-name="text"
+            :data-vv-scope="addPostForm.scope"
+            name="text"
+            :label="$t('message.text')" 
+            :hint="$t('message.fieldRequired')"
+            :placeholder="$t('message.text')" 
+            prepend-icon="create" 
+            :rules="addPostForm.rules.text" 
+            v-validate="'required'"></v-text-field>
+          <v-text-field 
+            :light="dark"
+            v-model="addPostForm.fields.image" 
+            data-vv-name="image"
+            :data-vv-scope="addPostForm.scope"
+            name="image"
+            :label="$t('message.image')"
+            :placeholder="$t('message.image')" 
+            prepend-icon="insert_link" 
+            :rules="addPostForm.rules.image" 
+            v-validate="'url'"
+            type="text"></v-text-field>
+          <div class="img-preview">
+            <img v-if="(/\.(gif|jpg|jpeg|tiff|png)$/i).test(addPostForm.fields.image)" :src="addPostForm.fields.image" />
+          </div>
+        </v-card-text>
+        <v-card-title>
+          <v-spacer></v-spacer>
+          <v-btn primary dark flat="flat" @click.native="setAddPostDialogToggle(false)">{{ $t('message.cancel') }}</v-btn>
+          <v-btn primary dark type="submit">{{ $t("message." + (id ? 'update' : 'add')) }}</v-btn>
+        </v-card-title>
       </form>
       <v-progress-linear v-show="loading" v-bind:indeterminate="true" class="ma-0"></v-progress-linear>
     </v-card>
