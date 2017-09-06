@@ -4,7 +4,7 @@
       <v-alert v-show="error" error :value="error">{{ error || $t('message.errorOccured') }}</v-alert>
     </v-slide-x-transition>
     <v-slide-x-transition>
-      <div v-if="show" class="profil-content">
+      <div v-if="show && !error" class="profil-content">
         <v-alert error icon="verified_user" :value="user.level < 2">
           {{ $t('message.admin') }}
         </v-alert>
@@ -185,6 +185,10 @@ export default {
         this.checkNotifications('friends', this.user.id);
         this.setLoadingPage(0);
         this.error = false;
+
+        if (this.user.state === false) {
+          this.error = 'Ce membre n\'existe plus';
+        }
       })
         .catch((errs) => {
           this.setLoadingPage(0);

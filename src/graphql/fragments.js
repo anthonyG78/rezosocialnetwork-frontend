@@ -17,6 +17,7 @@ export default {
       date,
       level,
       accepted,
+      state,
     }
   `,
   minUserFields: gql`
