@@ -34,44 +34,7 @@
       </v-card>
     </v-slide-y-transition>
     <v-slide-x-transition>
-      <v-layout row wrap v-if="show">
-        <template v-for="message in discussion.messages">
-          <template v-if="message.user.id == self._id">
-            <v-flex xs10 :key="message.id" class="mb-2">
-              <v-card class="grey lighten-4 pa-3">
-                <v-card-title>
-                  <span v-html="$options.filters.ligneBreak(message.text)"></span>
-                </v-card-title>
-              </v-card>
-              <small class="grey--text">{{ message.date | formatDate }}</small>
-            </v-flex>
-            <v-flex xs2 class="mb-2">
-              <router-link :to="{ name: 'profil_profil', params: { userId: message.user.id }}">
-                <v-list-tile-avatar>
-                  <img :src="message.user.avatar + '&s=64'"/>
-                </v-list-tile-avatar>
-              </router-link>
-            </v-flex>
-          </template>
-          <template v-else>
-            <v-flex xs2 class="mb-2">
-              <router-link :to="{ name: 'profil_profil', params: { userId: message.user.id }}">
-                <v-list-tile-avatar>
-                  <img :src="message.user.avatar + '&s=64'"/>
-                </v-list-tile-avatar>
-              </router-link>
-            </v-flex>
-            <v-flex xs10 :key="message.id" class="mb-2">
-              <v-card class="white pa-3">
-                <v-card-title>
-                  <span v-html="$options.filters.ligneBreak(message.text)"></span>
-                </v-card-title>
-              </v-card>
-              <small class="grey--text">{{ message.date | formatDate }}</small>
-            </v-flex>
-          </template>
-        </template>
-      </v-layout>
+      <messages v-if="show" :messages="discussion.messages" :self="self"></messages>
     </v-slide-x-transition>
     <v-slide-y-reverse-transition>
       <v-btn primary raised fab dark class="floatingActionBtn" v-show="show" @click.native="addMessageHandler">
@@ -102,6 +65,7 @@ import { mapActions, mapState, mapMutations } from 'vuex';
 import screenSizes from '@/mixins/screenSizes';
 import checkNotifications from '@/mixins/checkNotifications';
 import addDiscussionMessageDialog from '@/components/addDiscussionMessageDialog';
+import messages from '@/components/Messages';
 
 export default {
   mixins: [screenSizes, checkNotifications],
@@ -130,6 +94,7 @@ export default {
   },
   components: {
     'add-discussion-message-dialog': addDiscussionMessageDialog,
+    messages,
   },
   mounted() {
     this.setLoadingPage(1);

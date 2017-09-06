@@ -57,7 +57,24 @@
         </v-card-text>
         <v-list class="grey lighten-4">
           <v-subheader v-text="post.comments.length + ' ' + $tc('message.comment', post.comments.length ? 0 : 1)"></v-subheader>
-          <v-list-tile v-for="comment in post.comments" :key="comment.id" tag="div">
+          <v-layout row wrap class="ml-2 mr-2">
+            <template v-for="comment in post.comments">
+              <v-flex xs2 :key="comment.id" class="mb-2">
+                <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
+                  <v-list-tile-avatar>
+                    <img :src="comment.user.avatar + '&s=64'"/>
+                  </v-list-tile-avatar>
+                </router-link>
+              </v-flex>
+              <v-flex xs10 :key="comment.id" class="mb-2">
+                  <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
+                    <strong>{{ comment.user.username }}</strong>
+                  </router-link>
+                  <p class="comment-text">{{ comment.text }}</p>
+              </v-flex>
+            </template>
+          </v-layout>
+          <!-- <v-list-tile v-for="comment in post.comments" :key="comment.id" tag="div">
             <router-link :to="{ name: 'profil_profil', params: { userId: post.fromUser.id }}">
               <v-list-tile-avatar>
                 <img :src="comment.user.avatar + '&s=64'"/>
@@ -67,7 +84,7 @@
               <v-list-tile-title v-html="comment.user.username"></v-list-tile-title>
               <v-list-tile-sub-title v-html="comment.text"></v-list-tile-sub-title>
             </v-list-tile-content>
-          </v-list-tile>
+          </v-list-tile> -->
         </v-list>
       </v-card>
     </v-slide-x-transition>
@@ -174,4 +191,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" scoped>
+  .comment-text {
+    word-wrap: break-word;
+  }
 </style>
