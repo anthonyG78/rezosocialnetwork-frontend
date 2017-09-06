@@ -1,4 +1,4 @@
-# Genymotion Cloud Admin
+# REZO fronted
 
 REZO social network final project to IFOCOP
 
