@@ -40,7 +40,7 @@
             <v-flex xs10 :key="message.id" class="mb-2">
               <v-card class="grey lighten-4 pa-3">
                 <v-card-title>
-                  {{ message.text }}
+                  <span v-html="$options.filters.ligneBreak(message.text)"></span>
                 </v-card-title>
               </v-card>
               <small class="grey--text">{{ message.date | formatDate }}</small>

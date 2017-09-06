@@ -22,7 +22,7 @@
             :placeholder="$t('message.username')" 
             prepend-icon="account_circle" 
             :rules="updateProfilForm.rules.username" 
-            v-validate="'required'"></v-text-field>
+            ></v-text-field>
           <v-text-field 
             v-model="updateProfilForm.fields.firstName" 
             data-vv-name="firstName"
@@ -33,7 +33,7 @@
             :placeholder="$t('message.firstName')" 
             prepend-icon="account_circle" 
             :rules="updateProfilForm.rules.firstName" 
-            v-validate="'required|alpha'"></v-text-field>
+            v-validate="'alpha'"></v-text-field>
           <v-text-field 
             v-model="updateProfilForm.fields.lastName" 
             data-vv-name="lastName"
@@ -44,7 +44,7 @@
             :placeholder="$t('message.lastName')" 
             prepend-icon="account_circle" 
             :rules="updateProfilForm.rules.lastName" 
-            v-validate="'required|alpha'"></v-text-field>
+            v-validate="'alpha'"></v-text-field>
           <v-text-field 
             v-model="updateProfilForm.fields.email" 
             data-vv-name="email"
@@ -55,7 +55,7 @@
             :placeholder="$t('message.email')" 
             prepend-icon="mail" 
             :rules="updateProfilForm.rules.email" 
-            v-validate="'required|email'"
+            v-validate="'email'"
             type="email"></v-text-field>
           <v-text-field 
             v-model="updateProfilForm.fields.password" 
@@ -63,11 +63,9 @@
             :data-vv-scope="updateProfilForm.scope"
             name="password"
             :label="$t('message.password')"
-            :hint="$t('message.fieldRequired')"
             :placeholder="$t('message.password')" 
             prepend-icon="lock" 
             :rules="updateProfilForm.rules.password" 
-            v-validate="'required'"
             type="password"></v-text-field>
           <v-text-field 
             v-model="updateProfilForm.fields.avatar" 
@@ -75,11 +73,21 @@
             :data-vv-scope="updateProfilForm.scope"
             name="avatar"
             :label="$t('message.avatar')" 
-            :hint="$t('message.fieldRequired')"
             :placeholder="$t('message.avatar')" 
             prepend-icon="link" 
             :rules="updateProfilForm.rules.avatar" 
-            v-validate="'required|url'"
+            v-validate="'url'"
+            type="text"></v-text-field>
+          <v-text-field 
+            v-model="updateProfilForm.fields.background" 
+            data-vv-name="background"
+            :data-vv-scope="updateProfilForm.scope"
+            name="background"
+            :label="$t('message.background')" 
+            :placeholder="$t('message.background')" 
+            prepend-icon="link" 
+            :rules="updateProfilForm.rules.background" 
+            v-validate="'url'"
             type="text"></v-text-field>
         </v-card-text>
         <v-card-title actions class="pa-3">
@@ -114,6 +122,7 @@
             email: '',
             password: '',
             avatar: '',
+            background: '',
           },
           rules: {
             username: [],
@@ -122,6 +131,7 @@
             email: [],
             password: [],
             avatar: [],
+            background: [],
           },
           valide: false,
         },

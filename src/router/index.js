@@ -10,6 +10,7 @@ import presentationLayout from '@/components/layout/presentation';
 // Pages
 import signin from '@/components/pages/signin';
 import about from '@/components/pages/about';
+import notFound404 from '@/components/pages/notFound404';
 import communityPosts from '@/components/pages/communityPosts';
 import posts from '@/components/pages/posts';
 import friends from '@/components/pages/friends';
@@ -21,6 +22,7 @@ import searchUser from '@/components/pages/searchUser';
 
 const authorizedRoutes = [
   'about',
+  'notFound404',
 ];
 
 Vue.use(Router);
@@ -137,10 +139,20 @@ const router = new Router({
     {
       path: '*',
       name: '404',
-      component: {
-        template: '<div>404</div>',
+      components: {
+        toolbar: Toolbar,
+        navigation: Navigation,
+        default: notFound404,
+        footer: Footer,
       },
     },
+    // {
+    //   path: '*',
+    //   name: '404',
+    //   component: {
+    //     template: '<div>404</div>',
+    //   },
+    // },
   ],
 });
 

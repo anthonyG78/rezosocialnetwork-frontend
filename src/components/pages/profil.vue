@@ -8,8 +8,11 @@
         <v-alert error icon="verified_user" :value="user.level < 2">
           {{ $t('message.admin') }}
         </v-alert>
-        <v-alert primary icon="people" :value="user.accepted == 1">
-          {{ $t('message.waitingFriendship') }}
+        <div icon="people" v-if="user.accepted == 0" class="alert friendship-request primary white--text">
+            <div class="">
+              <v-icon class="alert__icon">wc</v-icon>
+              <span>{{ $t('message.waitingFriendship') }}</span>
+            </div>
             <div class="actions-btn-list">
               <v-btn icon class="white--text" @click.native="(e) => acceptFriendHandler(user._id)">
                 <v-icon>done</v-icon>
@@ -18,7 +21,7 @@
                 <v-icon>clear</v-icon>
               </v-btn>
             </div>
-        </v-alert>
+        </div>
         <v-list class="white" >
             <v-list-tile tag="div" :class="{'pink lighten-1': user.gender == 'femal', 'blue': user.gender == 'mal'}">
               <v-list-tile-action>
@@ -205,7 +208,7 @@ export default {
       });
     },
     deleteFriendHandler(userId) {
-      return this.deleteFriend(userId).then(() => {
+      return this.deleteFriend({ friendId: userId }).then(() => {
         this.$store.commit('setUser', Object.assign({}, this.user, { accepted: -1 }));
       });
     },
@@ -229,9 +232,15 @@ export default {
     }
   }
 
-  .actions-btn-list {
+  .friendship-request {
     display: flex;
-    flex: 1 1 50%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .actions-btn-list {
+    /*display: flex;*/
+    /*flex: 1 1 50%;*/
     justify-content: flex-end;
   }
 </style>

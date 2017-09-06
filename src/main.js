@@ -4,7 +4,6 @@ import Promise from 'bluebird';
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VeeValidate from 'vee-validate';
-import moment from 'moment';
 // import VueApollo from 'vue-apollo';
 // import Vuex from 'vuex';
 import App from './App';
@@ -16,6 +15,7 @@ import config from './plugins/config';
 // import commonStore from './store/common';
 // import apolloClient from './graphql/';
 import store from './store/';
+import filters from './plugins/filters';
 
 Vue.config.productionTip = false;
 
@@ -47,18 +47,6 @@ Vue.use(VeeValidate, {
 });
 // Vue.use(VueApollo);
 // Vue.use(Vuex);
-moment.locale(i18n.locale);
-Vue.filter('formatDate', (value) => {
-  if (value) {
-    const momentValue = moment(String(value));
-    const now = moment();
-    const diff = now.diff(momentValue);
-    const diffDuration = moment.duration(diff);
-    const diffDays = diffDuration.asDays();
-    return diffDays > 7 ? momentValue.format('LL') : momentValue.fromNow();
-  }
-  return value;
-});
 
 /* eslint-disable no-new */
 new Vue({
@@ -71,6 +59,7 @@ new Vue({
   store,
   router,
   i18n,
+  filters,
   // apolloProvider,
   // data: commonStore,
   template: '<App/>',

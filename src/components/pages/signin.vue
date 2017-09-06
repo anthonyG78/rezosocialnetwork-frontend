@@ -1,16 +1,20 @@
 <template>
   <v-container fluid class="page-container">
-    <v-layout row wrap :style="{ 'background-image': 'url('+materialBg+')' }">
-      <v-flex xs10 sm8 md6 lg4 offset-xs1 offset-sm2 offset-md3 offset-lg4 class="signin text-xs-center pa-4">
-        <div class="logo mb-4">
+    <v-layout row wrap :style="{ 'background-image': 'url('+materialBg+')', 'background-size': 'cover' }">
+      <v-flex xs10 sm8 md6 lg4 offset-xs1 offset-sm2 offset-md3 offset-lg4 class="signin pa-4">
+        <div class="logo mb-4 text-xs-center">
           <h1 class="white--text logo">
             <v-icon dark>bubble_chart</v-icon>
             <span>REZO</span>
           </h1>
         </div>
         <v-card class="elevation-10 mb-4" white>
-          <v-card-title primary-title class="primary--text">{{ $t("message.youMustSignInToContinue") }}</v-card-title>
-          <v-alert error :value="error" class="ma-3">{{ error }}</v-alert>
+          <v-card-title primary-title>
+            <h5 class="primary--text">{{ $t("message.youMustSignInToContinue") }}</h5>
+          </v-card-title>
+          <v-card-text>
+            <v-alert error :value="error">{{ error }}</v-alert>
+          </v-card-text>
           <v-tabs grow dark>
             <v-tabs-bar slot="activators">
               <v-tabs-slider></v-tabs-slider>
@@ -155,8 +159,10 @@
           </v-tabs>
           <v-progress-linear v-show="loading" v-bind:indeterminate="true" class="ma-0" secondary></v-progress-linear>
         </v-card>
-        <router-link to="/" class="white--text">{{ $t("message.forgottenPassword") }}</router-link> | 
-        <router-link :to="{ name: 'about' }" class="white--text">{{ $t("message.about") }}</router-link>
+        <div class="text-xs-center">
+          <router-link to="/" class="white--text">{{ $t("message.forgottenPassword") }}</router-link> | 
+          <router-link :to="{ name: 'about' }" class="white--text">{{ $t("message.about") }}</router-link>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>

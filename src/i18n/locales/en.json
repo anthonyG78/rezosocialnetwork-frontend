@@ -64,7 +64,9 @@
     "doURealyWantDeleteProfil": "do you realy want to delete the profil?",
     "valid": "valid",
     "about": "about",
-    "enterTheZone": "enter the zone"
+    "enterTheZone": "enter the zone",
+    "stayInTheZone": "stay in the zone",
+    "background": "background"
   },
   "error": {}
 }

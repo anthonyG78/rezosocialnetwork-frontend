@@ -66,7 +66,9 @@
     "doURealyWantDeleteProfil": "voulez-vous vraiment supprimer le profil ?",
     "valid": "valider",
     "about": "à propos",
-    "enterTheZone": "entrer dans la zone"
+    "enterTheZone": "entrer dans la zone",
+    "stayInTheZone": "rester dans la zone",
+    "background": "arrière plan"
   },
   "error": {}
 }
