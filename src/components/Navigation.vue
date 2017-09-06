@@ -41,7 +41,7 @@
           :to="item.route ? { name: item.route } : null"
           @click.native="item.click ? clickHandler(item.click) : null">
           <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon light>{{ item.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>{{ $t('message.'+item.title) }}</v-list-tile-title>

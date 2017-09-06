@@ -22,12 +22,14 @@
                 </v-btn>
               </template>
               <v-icon v-else-if="user.accepted == 0" class="grey--text pa-2">call_made</v-icon>
-              <v-btn v-if="user.accepted == 2 || self.level < 2" icon class="error--text" @click.native.stop="(e) => deleteFriend(e, user._id)">
-                <v-icon>highlight_off</v-icon>
-              </v-btn>
-              <v-btn v-else-if="user.accepted == -1 && user._id !== self._id" icon class="success--text" @click.native.stop="(e) => addFriendShip(e, user._id)">
-                <v-icon>add_circle_outline</v-icon>
-              </v-btn>
+              <template v-if="user._id !== self._id">
+                <v-btn v-if="user.accepted == -1" icon class="success--text" @click.native.stop="(e) => addFriendShip(e, user._id)">
+                  <v-icon>add_circle_outline</v-icon>
+                </v-btn>
+                <v-btn v-else-if="user.accepted == 2 || self.level < 2" icon class="error--text" @click.native.stop="(e) => deleteFriend(e, user._id)">
+                  <v-icon>highlight_off</v-icon>
+                </v-btn>
+              </template>
             </div>
           </v-list-tile-action>
         </template>

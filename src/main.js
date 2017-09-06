@@ -10,6 +10,7 @@ import App from './App';
 import router from './router';
 import i18n from './i18n/i18n';
 import config from './plugins/config';
+import langs from './plugins/langs';
 // import api from './plugins/api';
 // import authenticate from './plugins/authenticate';
 // import commonStore from './store/common';
@@ -19,14 +20,14 @@ import filters from './plugins/filters';
 
 Vue.config.productionTip = false;
 
+Vue.use(langs, Object.keys(i18n.messages));
 /** Get available langs keys */
-const langs = Object.keys(i18n.messages);
 const localesJs = require.context('vee-validate/dist/locale/', false, /.js$/);
 /** Load lang file founded */
 localesJs.keys().forEach((localePath) => {
   const lang = localePath.match(/(\w*).js/);
 
-  if (lang && langs.indexOf(lang[1]) !== -1) {
+  if (lang && Vue.$langs.indexOf(lang[1]) !== -1) {
     VeeValidate.Validator.addLocale(localesJs(localePath));
   }
 });

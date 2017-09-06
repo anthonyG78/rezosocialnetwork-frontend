@@ -3,6 +3,7 @@
   "message": {
     "darkMode": "dark mode",
     "youMustSignInToContinue": "you must sign in to continue",
+    "myPages": "my pages",
     "error": "error | errors",
     "fieldRequired": "required field",
     "username": "user name",
@@ -66,7 +67,9 @@
     "about": "about",
     "enterTheZone": "enter the zone",
     "stayInTheZone": "stay in the zone",
-    "background": "background"
+    "background": "background",
+    "en": "english",
+    "fr": "frensh"
   },
   "error": {}
 }

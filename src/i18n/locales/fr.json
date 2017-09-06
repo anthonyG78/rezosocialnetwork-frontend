@@ -68,7 +68,9 @@
     "about": "à propos",
     "enterTheZone": "entrer dans la zone",
     "stayInTheZone": "rester dans la zone",
-    "background": "arrière plan"
+    "background": "arrière plan",
+    "en": "anglais",
+    "fr": "français"
   },
   "error": {}
 }

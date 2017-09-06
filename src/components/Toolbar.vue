@@ -11,7 +11,20 @@
       </router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
     <search v-if="self" class="hidden-xs-only"></search>
+    <v-select
+      v-bind:items="langs"
+      item-text="text"
+      item-value="value"
+      v-model="selectedLang"
+      label="langue"
+      single-line
+      dark
+      prepend-icon="language"
+      hide-details
+      width="100"
+    ></v-select>
     <v-icon v-if="notifications.discussions.length || notifications.posts.length || notifications.friends.length" class="ml-3" dark>notifications</v-icon>
   </v-toolbar>
 </template>
@@ -25,14 +38,23 @@
     mixins: [screenSizes],
     data() {
       return {
-        selectedLang: null,
+        langs: [],
+        selectedLang: this.$i18n.locale,
         inputSearchFocus: false,
         loading: false,
         searchLimit: 5,
       };
     },
+    created() {
+      this.changeLang();
+    },
     components: {
       Search,
+    },
+    watch: {
+      selectedLang: function selectedLangChanged() {
+        this.changeLang();
+      },
     },
     computed: {
       ...mapState({
@@ -46,6 +68,13 @@
       ...mapMutations([
         'setDrawer',
       ]),
+      changeLang() {
+        this.$i18n.locale = this.selectedLang;
+        this.langs = this.$langs.map((lang) => {
+          const _lang = { text: this.$t(`message.${lang}`), value: lang };
+          return _lang;
+        });
+      },
     },
   };
 </script>
