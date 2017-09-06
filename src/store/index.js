@@ -55,7 +55,7 @@ export default new Vuex.Store({
       });
     },
     signin({ commit }, formData) {
-      return rezoApi.signin(formData.username, formData.password).then((data) => {
+      return rezoApi.signin(formData.email, formData.password).then((data) => {
         const user = data.user;
         commit('setSelf', user);
       });

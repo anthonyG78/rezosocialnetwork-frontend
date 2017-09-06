@@ -29,16 +29,17 @@
               <form @submit.prevent="formValidate(forms.signin.scope)">
                 <v-card-text class="text-xs-right">
                   <v-text-field 
-                    v-model="forms.signin.fields.username" 
-                    data-vv-name="username"
+                    v-model="forms.signin.fields.email" 
+                    data-vv-name="email"
                     :data-vv-scope="forms.signin.scope"
-                    name="username"
-                    :label="$t('message.username')" 
+                    name="email"
+                    :label="$t('message.email')" 
                     :hint="$t('message.fieldRequired')"
-                    :placeholder="$t('message.username')" 
+                    :placeholder="$t('message.email')" 
                     prepend-icon="account_circle" 
-                    :rules="forms.signin.rules.username" 
-                    v-validate="'required'"></v-text-field>
+                    :rules="forms.signin.rules.email" 
+                    v-validate="'required|email'"
+                    type="email">></v-text-field>
                   <v-text-field 
                     v-model="forms.signin.fields.password" 
                     data-vv-name="password"
@@ -198,11 +199,11 @@ export default {
           scope: 'signin',
           submitName: 'signin',
           fields: {
-            username: '',
+            email: '',
             password: '',
           },
           rules: {
-            username: [],
+            email: [],
             password: [],
           },
           valide: false,

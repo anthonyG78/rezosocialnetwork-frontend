@@ -65,12 +65,12 @@ export default class Rezo extends AbstractApi {
    * @param {string} password - The user password.
    * @return {Object} A Promise
    */
-  signin(username, password) {
+  signin(email, password) {
     return this.http({
       url: '/authenticate/login',
       method: 'post',
       data: {
-        username,
+        email,
         password,
       },
     })
