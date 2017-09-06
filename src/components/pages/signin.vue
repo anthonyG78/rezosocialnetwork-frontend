@@ -127,10 +127,11 @@
                     :hint="$t('message.fieldRequired')"
                     :rules="forms.register.rules.gender" 
                     prepend-icon="wc"
-                    dark
+                    light
                     single-line
                     auto
                   ></v-select>
+                  
                   <v-dialog persistent v-model="dialogDatePicker" lazy width="auto" style="width:100%">
                     <v-text-field
                       slot="activator"
@@ -144,11 +145,17 @@
                       prepend-icon="cake"
                       readonly
                     ></v-text-field>
-                    <v-date-picker v-model="forms.register.fields.age" scrollable :landscape="isLandscape">
+                    <v-date-picker 
+                      v-model="datepickerAge" 
+                      scrollable 
+                      :landscape="isLandscape" 
+                      :locale="$i18n.locale"
+                      :allowed-dates="allowedDates"
+                      :date-format="dateFormat">
                       <template scope="{ save, cancel }">
-                        <v-card-title actions>
-                          <v-btn flat primary @click.native="dialogDatePicker = false">{{ $t('message.cancel') }}</v-btn>
-                        </v-card-title>
+                        <v-card-actions>
+                          <v-btn flat primary @click.native="dialogDatePicker = false">{{ $t('message.valid') }}</v-btn>
+                        </v-card-actions>
                       </template>
                     </v-date-picker>
                   </v-dialog>
@@ -169,6 +176,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import { mapActions, mapMutations } from 'vuex';
 import screenSizes from '@/mixins/screenSizes';
 
@@ -177,6 +185,11 @@ export default {
   name: 'signin',
   data() {
     return {
+      allowedDates: {
+        min: null,
+        max: null,
+      },
+      datepickerAge: null,
       dialogDatePicker: false,
       tabId: 'mobile-tabs',
       forms: {
@@ -229,6 +242,13 @@ export default {
     };
   },
   mounted() {
+    // Datepicker Age
+    const now = new Date();
+    const d = new Date();
+    d.setFullYear(now.getFullYear() - 18);
+    this.allowedDates.max = d;
+    this.datepickerAge = moment(d);
+    // Background
     const randomized = Math.floor(Math.random() * 27) + 1;
     this.materialBg = `./static/background/material-bg-${randomized}.svg`;
   },
@@ -279,7 +299,10 @@ export default {
           if (validation) {
             const currentForm = this.forms[scope];
             this.loading = true;
-            return this[currentForm.action](currentForm.fields)
+            const form = scope === 'register' ?
+              Object.assign(currentForm.fields, { age: this.datepickerAge }) :
+              currentForm.fields;
+            return this[currentForm.action](form)
               .then(() => {
                 this.loading = false;
                 this.$router.push('/');
@@ -296,6 +319,9 @@ export default {
           this.loading = false;
           this.error = err.response.data;
         });
+    },
+    dateFormat(value) {
+      this.forms.register.fields.age = moment(value).format('LL');
     },
   },
 };

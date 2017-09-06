@@ -78,7 +78,7 @@
             :rules="updateProfilForm.rules.avatar" 
             v-validate="'url'"
             type="text"></v-text-field>
-          <v-text-field 
+          <!-- <v-text-field 
             v-model="updateProfilForm.fields.background" 
             data-vv-name="background"
             :data-vv-scope="updateProfilForm.scope"
@@ -88,7 +88,7 @@
             prepend-icon="link" 
             :rules="updateProfilForm.rules.background" 
             v-validate="'url'"
-            type="text"></v-text-field>
+            type="text"></v-text-field> -->
         </v-card-text>
         <v-card-title actions class="pa-3">
           <v-btn primary dark flat @click.native="$emit('input', false)">{{ $t('message.cancel') }}</v-btn>
@@ -122,7 +122,7 @@
             email: '',
             password: '',
             avatar: '',
-            background: '',
+            // background: '',
           },
           rules: {
             username: [],
@@ -131,7 +131,7 @@
             email: [],
             password: [],
             avatar: [],
-            background: [],
+            // background: [],
           },
           valide: false,
         },
