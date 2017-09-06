@@ -30,6 +30,7 @@
 </template>
 
 <script>
+  import moment from 'moment';
   import { mapState, mapMutations } from 'vuex';
   import Search from '@/components/Search';
   import screenSizes from '../mixins/screenSizes';
@@ -70,6 +71,7 @@
       ]),
       changeLang() {
         this.$i18n.locale = this.selectedLang;
+        moment.locale(this.$i18n.locale);
         this.langs = this.$langs.map((lang) => {
           const _lang = { text: this.$t(`message.${lang}`), value: lang };
           return _lang;
